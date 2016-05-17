@@ -5,23 +5,27 @@ import java.util.Random;
 
 
 public class main {
-
+    private static String question;
     private static Random random = new Random();
 
+    /*
+    Everything gets called through this process when the alarm is triggered at the time set.
+    */
     public static void main(String[] args) throws IOException
     {
-        getRandomInt(1,200);
+        generateQuestion(1, 200);
     }
 
-    public static String getAnswer() throws IOException{
+    /*
+    This method should read the users answer from the text box and it will be submitted when they press the button to turn off the alarm.
+     */
+    private static String readInAnswer() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("=");
         String input = br.readLine();
         return input;
     }
-    public static void getRandomInt(int min, int max) throws IOException
+    private static void generateQuestion(int min, int max) throws IOException
     {
-        String question;
         int number1 = random.nextInt(max - min + 1) + min;
         int number2 = random.nextInt(max - min + 1) + min;
         int equationChooser = random.nextInt(max - min + 1) + min;
@@ -31,81 +35,97 @@ public class main {
         {
             if(number1%number2 == 0)
             {
-                question = number1 + "/" + number2;
+                question = number1 + "/" + number2 + "=";
                 System.out.print(question);
 
-                if (getAnswer().equals(Integer.toString(number1/number2)))
+                if (readInAnswer().equals(Integer.toString(number1 / number2)))
                 {
                     System.out.print("Correct!");
                     System.exit(1);
+                    /*
+                    Insert code to turn off the alarm here.
+                     */
+
                 }
                 else
                 {
                     System.out.print("Incorrect!");
-                    getRandomInt(1, 200);
+                    generateQuestion(1, 200);
                 }
             }
             else if (number2%number1 == 0) {
-                question = number2 + "/" + number1;
+                question = number2 + "/" + number1 + "=";
                 System.out.print(question);
 
-                if (getAnswer().equals(Integer.toString(number2 / number1))) {
+                if (readInAnswer().equals(Integer.toString(number2 / number1))) {
                     System.out.print("Correct!");
                     System.exit(1);
+                    /*
+                    Insert code to turn off the alarm here.
+                     */
                 } else {
                     System.out.print("Incorrect!");
-                    getRandomInt(1, 200);
+                    generateQuestion(1, 200);
                 }
             }
         }
         else if (number2 >= number1 && equationChooser > 50 && equationChooser <= 100)
         {
-            question = number2 + "-" + number1;
+            question = number2 + "-" + number1 + "=";
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 - number1)))
+            if(readInAnswer().equals(Integer.toString(number2 - number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
+                /*
+                Insert code to turn off the alarm here.
+                */
             }
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else if(number2<=20)
         {
-            question = number2 + "*" + number1;
+            question = number2 + "*" + number1 + "=";
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 * number1)))
+            if(readInAnswer().equals(Integer.toString(number2 * number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
+                /*
+                Insert code to turn off the alarm here.
+                */
             }
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else if(equationChooser>100 && equationChooser <= 150)
         {
-            question = number2 + "+" + number1;
+            question = number2 + "+" + number1 + "=";
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 + number1)))
+            if(readInAnswer().equals(Integer.toString(number2 + number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
+                /*
+                Insert code to turn off the alarm here.
+                */
             }
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else
         {
-            getRandomInt(1,200);
+            generateQuestion(1, 200);
         }
     }
 }
