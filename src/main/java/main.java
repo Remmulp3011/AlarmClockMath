@@ -10,7 +10,7 @@ public class main {
 
     public static void main(String[] args) throws IOException
     {
-        getRandomInt(1,100);
+        getRandomInt(1,200);
     }
 
     public static String getAnswer() throws IOException{
@@ -22,60 +22,90 @@ public class main {
     public static void getRandomInt(int min, int max) throws IOException
     {
         String question;
-        int x = random.nextInt(max - min + 1) + min;
-        int y = random.nextInt(max - min + 1) + min;
-        System.out.println("X is:" + x + " Y is:" + y);
-        if(x%y == 0)
+        int number1 = random.nextInt(max - min + 1) + min;
+        int number2 = random.nextInt(max - min + 1) + min;
+        int equationChooser = random.nextInt(max - min + 1) + min;
+        System.out.println("X is:" + number1 + " Y is:" + number2 + " Z is: " + equationChooser);
+
+        if(number1%number2 == 0 || number2%number1 == 0)
         {
-            question = x + "/" + y;
-            System.out.print(question);
-            if(getAnswer().equals(Integer.toString(x/y)))
+            if(number1%number2 == 0)
             {
-                System.out.print("Correct!");
+                question = number1 + "/" + number2;
+                System.out.print(question);
+
+                if (getAnswer().equals(Integer.toString(number1/number2)))
+                {
+                    System.out.print("Correct!");
+                    System.exit(1);
+                }
+                else
+                {
+                    System.out.print("Incorrect!");
+                    getRandomInt(1, 200);
+                }
             }
-            else
-            {
-                getRandomInt(1,100);
+            else if (number2%number1 == 0) {
+                question = number2 + "/" + number1;
+                System.out.print(question);
+
+                if (getAnswer().equals(Integer.toString(number2 / number1))) {
+                    System.out.print("Correct!");
+                    System.exit(1);
+                } else {
+                    System.out.print("Incorrect!");
+                    getRandomInt(1, 200);
+                }
             }
         }
-        else if (y%x == 0)
+        else if (number2 >= number1 && equationChooser > 50 && equationChooser <= 100)
         {
-            question = y + "/" + x;
+            question = number2 + "-" + number1;
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(y/x)))
+            if(getAnswer().equals(Integer.toString(number2 - number1)))
             {
                 System.out.print("Correct!");
+                System.exit(1);
             }
             else
             {
-                getRandomInt(1,100);
+                System.out.print("Incorrect!");
+                getRandomInt(1,200);
             }
         }
-        else if (y >= x)
+        else if(number2<=20)
         {
-            question = y + "-" + x;
+            question = number2 + "*" + number1;
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(y - x)))
+            if(getAnswer().equals(Integer.toString(number2 * number1)))
             {
                 System.out.print("Correct!");
+                System.exit(1);
             }
             else
             {
-                getRandomInt(1,100);
+                System.out.print("Incorrect!");
+                getRandomInt(1,200);
+            }
+        }
+        else if(equationChooser>100 && equationChooser <= 150)
+        {
+            question = number2 + "+" + number1;
+            System.out.print(question);
+            if(getAnswer().equals(Integer.toString(number2 + number1)))
+            {
+                System.out.print("Correct!");
+                System.exit(1);
+            }
+            else
+            {
+                System.out.print("Incorrect!");
+                getRandomInt(1,200);
             }
         }
         else
         {
-            question = y + "+" + x;
-            System.out.print(question);
-            if(getAnswer().equals(Integer.toString(y + x)))
-            {
-                System.out.print("Correct!");
-            }
-            else
-            {
-                getRandomInt(1,100);
-            }
+            getRandomInt(1,200);
         }
     }
 }
