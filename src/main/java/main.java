@@ -1,3 +1,4 @@
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,18 +9,19 @@ public class main {
 
     private static Random random = new Random();
 
-    public static void main(String[] args) throws IOException
+    @PostConstruct
+    public void setRandomRange() throws IOException
     {
-        getRandomInt(1,200);
+        generateQuestion(1, 200);
     }
 
-    public static String getAnswer() throws IOException{
+    public static String readInAnswer() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("=");
         String input = br.readLine();
         return input;
     }
-    public static void getRandomInt(int min, int max) throws IOException
+    public static void generateQuestion(int min, int max) throws IOException
     {
         String question;
         int number1 = random.nextInt(max - min + 1) + min;
@@ -34,7 +36,7 @@ public class main {
                 question = number1 + "/" + number2;
                 System.out.print(question);
 
-                if (getAnswer().equals(Integer.toString(number1/number2)))
+                if (readInAnswer().equals(Integer.toString(number1 / number2)))
                 {
                     System.out.print("Correct!");
                     System.exit(1);
@@ -42,19 +44,19 @@ public class main {
                 else
                 {
                     System.out.print("Incorrect!");
-                    getRandomInt(1, 200);
+                    generateQuestion(1, 200);
                 }
             }
             else if (number2%number1 == 0) {
                 question = number2 + "/" + number1;
                 System.out.print(question);
 
-                if (getAnswer().equals(Integer.toString(number2 / number1))) {
+                if (readInAnswer().equals(Integer.toString(number2 / number1))) {
                     System.out.print("Correct!");
                     System.exit(1);
                 } else {
                     System.out.print("Incorrect!");
-                    getRandomInt(1, 200);
+                    generateQuestion(1, 200);
                 }
             }
         }
@@ -62,7 +64,7 @@ public class main {
         {
             question = number2 + "-" + number1;
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 - number1)))
+            if(readInAnswer().equals(Integer.toString(number2 - number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
@@ -70,14 +72,14 @@ public class main {
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else if(number2<=20)
         {
             question = number2 + "*" + number1;
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 * number1)))
+            if(readInAnswer().equals(Integer.toString(number2 * number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
@@ -85,14 +87,14 @@ public class main {
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else if(equationChooser>100 && equationChooser <= 150)
         {
             question = number2 + "+" + number1;
             System.out.print(question);
-            if(getAnswer().equals(Integer.toString(number2 + number1)))
+            if(readInAnswer().equals(Integer.toString(number2 + number1)))
             {
                 System.out.print("Correct!");
                 System.exit(1);
@@ -100,12 +102,12 @@ public class main {
             else
             {
                 System.out.print("Incorrect!");
-                getRandomInt(1,200);
+                generateQuestion(1, 200);
             }
         }
         else
         {
-            getRandomInt(1,200);
+            generateQuestion(1, 200);
         }
     }
 }
