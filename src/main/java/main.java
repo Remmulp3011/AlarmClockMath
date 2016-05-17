@@ -29,16 +29,19 @@ public class main {
 
         if(number1%number2 == 0 || number2%number1 == 0)
         {
-            if(number1%number2 == 0) {
+            if(number1%number2 == 0)
+            {
                 question = number1 + "/" + number2;
                 System.out.print(question);
 
-                if (getAnswer().equals(Integer.toString(number1/number2))) {
+                if (getAnswer().equals(Integer.toString(number1/number2)))
+                {
                     System.out.print("Correct!");
                     System.exit(1);
                 }
                 else
                 {
+                    System.out.print("Incorrect!");
                     getRandomInt(1, 200);
                 }
             }
@@ -50,6 +53,7 @@ public class main {
                     System.out.print("Correct!");
                     System.exit(1);
                 } else {
+                    System.out.print("Incorrect!");
                     getRandomInt(1, 200);
                 }
             }
@@ -65,6 +69,7 @@ public class main {
             }
             else
             {
+                System.out.print("Incorrect!");
                 getRandomInt(1,200);
             }
         }
@@ -79,6 +84,7 @@ public class main {
             }
             else
             {
+                System.out.print("Incorrect!");
                 getRandomInt(1,200);
             }
         }
@@ -93,6 +99,7 @@ public class main {
             }
             else
             {
+                System.out.print("Incorrect!");
                 getRandomInt(1,200);
             }
         }
