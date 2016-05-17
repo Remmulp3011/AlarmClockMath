@@ -1,4 +1,3 @@
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,8 +8,7 @@ public class main {
 
     private static Random random = new Random();
 
-    @PostConstruct
-    public void setRandomRange() throws IOException
+    public static void main(String[] args) throws IOException
     {
         generateQuestion(1, 200);
     }
