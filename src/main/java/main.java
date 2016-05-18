@@ -7,6 +7,7 @@ import java.util.Random;
 public class main {
     /*
     Everything gets called through this process when the alarm is triggered at the time set.
+    Possible mode select via user input of easy/ hard. Use if statements to change random number range depending on what is picked.
     */
     private static String question;
     private static int answer;
