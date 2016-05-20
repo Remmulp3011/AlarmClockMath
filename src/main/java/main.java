@@ -53,9 +53,6 @@ public class main {
                 {
                     answer = number1 / number2;
                     incorrectAnswer();
-                    /*
-                    Generates new question (question select may need altering.)
-                    */
                 }
             }
             else if (number2%number1 == 0) {
@@ -72,9 +69,6 @@ public class main {
                 {
                     answer = number2/number1;
                     incorrectAnswer();
-                    /*
-                    Generates new question (question select may need altering.)
-                     */
                 }
             }
         }
@@ -93,9 +87,6 @@ public class main {
             {
                 answer = number2 - number1;
                 incorrectAnswer();
-                /*
-                Generates new question (question select may need altering.)
-                 */
             }
         }
         else if(number2<=20)
@@ -113,9 +104,6 @@ public class main {
             {
                 answer = number2 * number1;
                 incorrectAnswer();
-                /*
-                Generates new question (question select may need altering.)
-                 */
             }
         }
         else if(equationChooser>100 && equationChooser <= 150)
@@ -133,9 +121,6 @@ public class main {
             {
                 answer = number2 + number1;
                 incorrectAnswer();
-                /*
-                Generates new question (question select may need altering.)
-                 */
             }
         }
         else
